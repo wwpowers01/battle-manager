@@ -4,12 +4,23 @@
       <% if false %>
 
       <% else %>
-        <ul class="nav navbar-nav navbar-left navbar-expand-lg">
-          <li><%= link_to "New Combat", '#' %></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Login/Signup", '#' %></li>
-        </ul>
+        <%= form_for('#', url: login_path, html: { class: "navbar-form navbar-left form-inline"}) do |f| %>
+          <!-- above url: is a placeholder. should be new_combat_path-->
+          <%= f.submit 'New Combat', disabled: true, class: "btn btn-outline-secondary" %>
+        <% end %>
+        <%= form_for(:session, url: login_path, html: { class: "navbar-form navbar-right form-inline" }) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :email, :placeholder => "Email", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, :placeholder => "Password", class: "form-control"  %>
+          </div>
+          <!--<div class="checkbox">
+            <%= f.check_box :remember_me %><%= f.label :remember_me %>
+          </div>-->
+          <%= f.submit 'Login', class: "btn btn-default" %>
+          <%= link_to "Register", '#' %>
+        <% end %>
       <% end %>
     </nav>
   </div>

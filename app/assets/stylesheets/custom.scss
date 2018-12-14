@@ -1,2 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* variables */
+
+$light-grey-blue: #c0c8d6;
+$lighter-grey-blue: #e3ebf7;
+
+/* Header */
+
+.navbar {
+    background-color: $light-grey-blue;
+    border: 0;
+}
+
+/* Universal */
+
+body {
+  padding-top: 65px;
+  background-color: $lighter-grey-blue;
+}
+
+/* Home */

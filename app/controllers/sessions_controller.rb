@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
-      redirect_to root_url
+      if @user.combats.first.nil?
+        redirect_to root_url
+      else
+        redirect_to @user.combats.first
+      end
     else
       flash[:danger] = "Login has failed. Invalid email or password."
       redirect_to root_url

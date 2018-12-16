@@ -12,10 +12,14 @@ $lighter-grey-blue: #e3ebf7;
     border: 0;
 }
 
+.navbar-left {
+  float: none;
+}
+
 /* Universal */
 
 body {
-  padding-top: 65px;
+  padding-top: 100px; /* should be 65 once navbar is always inline */
   background-color: $lighter-grey-blue;
 }
 

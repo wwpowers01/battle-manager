@@ -7,9 +7,11 @@
             <%= f.submit 'Start Combat', class: "btn btn-outline-secondary" %>
           <% end %>
         <% else %>
-          <%= render 'combats/core_button_group' %>
+          <form class="navbar-form navbar-left form-inline">
+            <%= render 'combats/core_button_group' %>
+          </form>
         <% end %>
-        <div class="navbar-right form-inline">
+        <form class="navbar-form navbar-right form-inline">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= gravatar_for current_user, size: 20 %>
@@ -21,7 +23,7 @@
               </li>
             </ul>
           </li>
-        </div>
+        </form>
       <% else %>
         <%= form_for(:combat, url: combats_path, html: { class: "navbar-form navbar-left form-inline"}) do |f| %>
           <%= f.submit 'Start Combat', disabled: true, class: "btn btn-outline-secondary" %>

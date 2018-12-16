@@ -2,20 +2,22 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Register with Combat Master</h5>
+      <h4 class="modal-title">Register with Combat Master</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <%= form_for @user, remote: true do |f| %>
+      <%= render 'shared/error_messages', object: @user %>
+      <%= form_for @user, remote: true do |f| %>
       <div class="modal-body">
         <%= f.email_field :email, placeholder: "Email" %><br>
         <%= f.password_field :password, placeholder: "Password" %><br>
         <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %><br>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%= f.submit "Create my account", class: "btn btn-primary" %>
       </div>
-    <% end %>
+      <% end %>
   </div>
 </div>

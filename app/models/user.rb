@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_save :downcase_email
+  before_save :downcase_email, :activate_user
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -14,6 +14,9 @@ class User < ApplicationRecord
     allow_nil: true)
     has_secure_password
 
+  def activate_user
+    update_column(:active, true)
+  end
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)

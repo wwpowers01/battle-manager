@@ -19,7 +19,7 @@
             <%= f.check_box :remember_me %><%= f.label :remember_me %>
           </div>-->
           <%= f.submit 'Login', class: "btn btn-default" %>
-          <%= link_to "Register", register_path, { remote: true, 'data-toggle' => "modal", 'data-target' => '#register-modal' } %>
+          <%= link_to "Register", register_path, data: { remote: true, toggle: "modal", target: "registerModal" } %>
         <% end %>
       <% end %>
     </nav>

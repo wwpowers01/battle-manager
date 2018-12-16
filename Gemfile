@@ -18,6 +18,9 @@ gem 'bootsnap', '1.3.2'
 gem 'faker', '1.9.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'bootstrap-will_paginate', '~> 1.0'
+gem 'responders', '~> 2.4'
+gem 'bootstrap-modal-rails', '~> 2.2', '>= 2.2.5'
+gem 'popper_js', '~> 1.14', '>= 1.14.5'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

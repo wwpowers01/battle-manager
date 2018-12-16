@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav>
-      <% if false %>
+      <% if logged_in? %>
 
       <% else %>
         <%= form_for('#', url: login_path, html: { class: "navbar-form navbar-left form-inline"}) do |f| %>

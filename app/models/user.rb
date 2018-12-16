@@ -28,4 +28,7 @@ class User < ApplicationRecord
   def User.new_token
     SecureRandom.urlsafe_base64
   end
+  def username
+    self.email.split("@").first
+  end
 end

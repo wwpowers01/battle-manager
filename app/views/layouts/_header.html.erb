@@ -2,11 +2,29 @@
   <div class="container">
     <nav>
       <% if logged_in? %>
-
+        <% if current_page?(root_path) %>
+          <%= form_for(:combat, url: combats_path, html: { class: "navbar-form navbar-left form-inline"}) do |f| %>
+            <%= f.submit 'Start Combat', class: "btn btn-outline-secondary" %>
+          <% end %>
+        <% else %>
+          <%= render 'combats/core_button_group' %>
+        <% end %>
+        <div class="navbar-right form-inline">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= gravatar_for current_user, size: 20 %>
+              <%= current_user.username %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to "Log out", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        </div>
       <% else %>
-        <%= form_for('#', url: login_path, html: { class: "navbar-form navbar-left form-inline"}) do |f| %>
-          <!-- above url: is a placeholder. should be new_combat_path-->
-          <%= f.submit 'New Combat', disabled: true, class: "btn btn-outline-secondary" %>
+        <%= form_for(:combat, url: combats_path, html: { class: "navbar-form navbar-left form-inline"}) do |f| %>
+          <%= f.submit 'Start Combat', disabled: true, class: "btn btn-outline-secondary" %>
         <% end %>
         <%= form_for(:session, url: login_path, html: { class: "navbar-form navbar-right form-inline" }) do |f| %>
           <div class="form-group">

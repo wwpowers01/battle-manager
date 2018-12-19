@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/login',        to: 'sessions#create'
   delete '/logout',     to: 'sessions#destroy'
 
-  resources :combats, only: [:create, :show] do
+  resources :combats, only: [:create, :show, :new] do
     member do
       patch 'next'
       patch 'previous'

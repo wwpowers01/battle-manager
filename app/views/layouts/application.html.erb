@@ -11,6 +11,7 @@
   </head>
   <body>
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" data-backdrop="false"></div>
+    <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do | message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

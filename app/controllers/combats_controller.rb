@@ -7,6 +7,8 @@ class CombatsController < ApplicationController
     end
     redirect_to user.combats.first
   end
+  def new
+  end
   def show
     @combat = Combat.find(params[:id])
   end

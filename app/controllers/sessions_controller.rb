@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
       if @user.combats.first.nil?
-        redirect_to root_url
+        redirect_to new_combat_path
       else
         redirect_to @user.combats.first
       end

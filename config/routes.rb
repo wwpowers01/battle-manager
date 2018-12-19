@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
+  get '/new',          to: 'static_pages#show'
   get '/register',      to: 'users#register'
 
   post '/login',        to: 'sessions#create'

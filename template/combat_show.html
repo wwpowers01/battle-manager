@@ -40,8 +40,8 @@
       </div>
     </nav>
     <div class="core-body">
-      <div class="row split">
-        <div class="col-6 combatant-col" id="one">
+      <div class="row split flex">
+        <div class="combatants-col" id="one">
           <div class="combat-navbar navbar navbar-fixed-top navbar-light bg-light">
             <div class="btn-toolbar mr-2" role="group">
               <div class="btn-group" role="group">
@@ -60,28 +60,26 @@
               </div>
             </div>
           </div>
-          <div class="under-navbar">
+          <div class="combatants">
             Combatants
           </div>
         </div>
-        <div class="col-6" id="two">
-          Details
+        <div class="details-col" id="two">
+          <div class="details">
+            Details
+          </div>
         </div>
       </div>
     </div>
     <script type="text/javascript">
       Split(['#one', '#two'], {
-        elementStyle: function (dimension, size, gutterSize) {
-          $(window).trigger('resize');
-          return { 'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'}
-        },
-        gutterStyle: function (dimesion, gutterSize) {
-          return { 'flex-basis': gutterSize + 'px' }
-        },
-        minSize: 50,
-        gutterSize: 6,
-        cursor: 'col-resize'
-      });
+        elementStyle: (dimension, size, gutterSize) => ({
+            'flex-basis': `calc(${size}% - ${gutterSize}px)`,
+        }),
+        gutterStyle: (dimension, gutterSize) => ({
+            'flex-basis':  `${gutterSize}px`,
+        }),
+      })
     </script>
   </body>
 </html>

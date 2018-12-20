@@ -2,17 +2,10 @@ html, body {
   height: 100%;
 }
 
-.split {
-  height: 100%;
-}
-
 .center {
   text-align: center;
 }
 
-.under-navbar {
-  padding-top: 60px; /* 56px for top navbar */
-}
 .core-body {
   padding-top: 56px;
   margin-left: 10%;
@@ -26,12 +19,26 @@ html, body {
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
+  height: 100%;
+}
+
+.combatants-col {
+  float: left;
+}
+
+.details-col {
+  float: right;
 }
 
 .gutter {
   background-color: #330000;
   background-repeat: no-repeat;
   background-position: 50%;
+}
+
+#flex {
+    display: flex;
+    flex-direction: row;
 }
 
 .gutter.gutter-horizontal {

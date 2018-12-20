@@ -1,0 +1,12 @@
+.center {
+  text-align: center;
+}
+
+.under-navbar {
+  padding-top: 60px; /* 56px for top navbar */
+}
+.core-body {
+  padding-top: 56px;
+  margin-left: 10%;
+  margin-right: 10%;
+}

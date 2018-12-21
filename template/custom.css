@@ -80,7 +80,7 @@ li .combatant-list-item {
 
 li .handle {
   background: #f8f8f8;
-  position: left;
+  float: left;
   padding: 8px;
 }
 

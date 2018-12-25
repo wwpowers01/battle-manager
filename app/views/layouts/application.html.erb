@@ -10,7 +10,9 @@
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" data-backdrop="false"></div>
+    <% if !logged_in? %>
+      <%= render 'static_pages/register' %>
+    <% end %>
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do | message_type, message| %>

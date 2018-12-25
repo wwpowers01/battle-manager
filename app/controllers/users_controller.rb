@@ -10,10 +10,6 @@ class UsersController < ApplicationController
   end
   def register
     @user = User.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   private

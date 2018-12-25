@@ -5,11 +5,15 @@ class UsersController < ApplicationController
       flash[:success] = "Account created successfully!"
       redirect_to root_url
     else
-      render 'register'
+      register
     end
   end
   def register
     @user = User.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

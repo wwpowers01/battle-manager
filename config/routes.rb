@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root    'static_pages#home'
 
-  get '/new',          to: 'static_pages#show'
-  get '/register',      to: 'users#register'
+  get     '/new',        to: 'static_pages#show'
 
-  post '/login',        to: 'sessions#create'
-  delete '/logout',     to: 'sessions#destroy'
+  post    '/login',      to: 'sessions#create'
+  delete  '/logout',     to: 'sessions#destroy'
+  get     '/register',   to: "users#register"
 
+  resources :users
   resources :combats, only: [:create, :show, :new, :index] do
     member do
       patch 'next'

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :combats
-  before_save :downcase_email, :activate_user
+  after_save :downcase_email, :activate_user
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 

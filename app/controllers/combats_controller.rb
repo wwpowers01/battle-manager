@@ -8,6 +8,10 @@ class CombatsController < ApplicationController
     redirect_to user.combats.first
   end
   def new
+    if !logged_in?
+      flash[:danger] = "You must be logged in to do that."
+      redirect_to root_url
+    end
   end
   def show
     @combat = Combat.find(params[:id])

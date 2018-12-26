@@ -13,11 +13,8 @@ Rails.application.routes.draw do
       patch 'next'
       patch 'previous'
       patch 'roll'
-    end
-    collection do
       patch 'damage'
       patch 'heal'
     end
   end
-
 end

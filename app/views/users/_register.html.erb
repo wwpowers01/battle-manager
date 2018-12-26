@@ -7,7 +7,7 @@
       </button>
     </div>
     <%= render 'shared/error_messages', object: @user %>
-    <%= form_for @user, remrote: true do |f| %>
+    <%= form_for @user, remote: true do |f| %>
       <div class="modal-body">
         <%= f.email_field :email, placeholder: "Email" %><br>
         <%= f.password_field :password, placeholder: "Password" %><br>

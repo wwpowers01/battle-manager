@@ -14,10 +14,10 @@
       <div class="modal fade" id="registerModal" tabindex="-1" role="dialog"></div>
     <% end %>
     <%= render 'layouts/header' %>
+    <% flash.each do | message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
     <div class="container">
-      <% flash.each do | message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
       <%= yield %>
     </div>
   </body>

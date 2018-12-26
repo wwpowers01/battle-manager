@@ -15,5 +15,21 @@ class CombatsController < ApplicationController
   end
   def show
     @combat = Combat.find(params[:id])
+    redirect_to root_url unless valid_access?(@combat)
   end
+
+  private
+    def valid_access?(combat)
+      if logged_in?
+        if current_user?(combat.user)
+          return true
+        else
+          flash[:danger] = "You are not authorized to do that."
+          return false
+        end
+      else
+        flash[:danger] = "You must be logged in to do that."
+        return false
+      end
+    end
 end

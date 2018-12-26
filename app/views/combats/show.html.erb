@@ -1,8 +1,43 @@
-<div class="row no-gutters">
-  <div id="combat" class="col-lg-6">
-      Container Left
-  </div>
-  <div id="details" class="col-lg-6">
-      Container Right
+<div class="core-body">
+  <div class="row split flex">
+    <div class="combatants-col" id="one">
+      <div class="combat-navbar navbar navbar-fixed-top navbar-light bg-light">
+        <div class="btn-toolbar mr-2" role="group">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-secondary btn-sm">Add</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Add Many</a>
+            </div>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-secondary btn-sm">Remove</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Remove Many</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="combatants">
+        <ol id="combatants-list">
+          <li class="combatant-list-item">First Person</li>
+          <li class="combatant-list-item">Second Person</li>
+          <li class="combatant-list-item">Third Person</li>
+          <li class="combatant-list-item">Fourth Person</li>
+          <li class="combatant-list-item">Fifth Person</li>
+        </ol>
+      </div>
+    </div>
+    <div class="details-col" id="two">
+      <div class="details">
+        Details
+      </div>
+    </div>
   </div>
 </div>
+<%= javascript_include_tag "split", "list_handler" %>

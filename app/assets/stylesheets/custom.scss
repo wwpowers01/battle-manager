@@ -74,20 +74,18 @@ html, body {
   padding: 0px;
 }
 
-li .combatant-list-item {
+.combatant-list-item {
   background: white;
   position: relative;
-  margin: 1em 0;
+  margin: 1em 1.25em 1em 1em;
   padding: 1em;
   border: 2px solid black;
   list-style: none;
-  padding-left: 42px;
 }
 
-li .handle {
+.handle {
   background: #f8f8f8;
   float: left;
-  padding: 8px;
 }
 
 .ui-selecting {

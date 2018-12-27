@@ -17,4 +17,7 @@ Rails.application.routes.draw do
       patch 'heal'
     end
   end
+
+  resources :combatants
+  resources :characters
 end

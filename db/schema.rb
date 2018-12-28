@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_27_193704) do
+ActiveRecord::Schema.define(version: 2018_12_28_144757) do
 
 # Could not dump table "characters" because of following StandardError
 #   Unknown type 'String' for column 'type'

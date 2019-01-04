@@ -10,13 +10,13 @@ Rails.application.routes.draw do
   resources :users
   resources :combats, only: [:create, :show, :new, :index] do
     member do
-      patch 'next'
-      patch 'previous'
-      patch 'roll'
-      patch 'damage'
-      patch 'heal'
-      patch 'add'
-      patch 'remove'
+      post 'next'
+      post 'previous'
+      post 'roll'
+      post 'damage'
+      post 'heal'
+      post 'add'
+      post 'remove'
     end
   end
 

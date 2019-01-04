@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :combats
+  has_many :combats, dependant: :destroy
   after_save :downcase_email, :activate_user
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

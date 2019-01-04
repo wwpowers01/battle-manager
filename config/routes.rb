@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       patch 'roll'
       patch 'damage'
       patch 'heal'
+      patch 'add'
+      patch 'remove'
     end
   end
 

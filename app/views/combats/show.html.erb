@@ -1,35 +1,12 @@
 <div class="core-body">
   <div class="row split flex">
     <div class="combatants-col" id="one">
-      <div class="combat-navbar navbar navbar-fixed-top navbar-light bg-light">
-        <div class="btn-toolbar mr-2" role="group">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-outline-secondary btn-sm">Add</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <a href="#" class="dropdown-item">Add Many</a>
-            </div>
-          </div>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-outline-secondary btn-sm">Remove</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <a href="#" class="dropdown-item">Remove Many</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render 'combats_navbar' %>
       <div class="combatants">
         <ol id="combatants-list">
-          <li class="combatant-list-item">First Person</li>
-          <li class="combatant-list-item">Second Person</li>
-          <li class="combatant-list-item">Third Person</li>
-          <li class="combatant-list-item">Fourth Person</li>
-          <li class="combatant-list-item">Fifth Person</li>
+          <% @combat.combatants.each do |combatant| %>
+            <%= render partial: 'combatants/combatant_lg', locals: { combatant: combatant } %>
+          <% end %>
         </ol>
       </div>
     </div>

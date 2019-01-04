@@ -1,7 +1,11 @@
 class CombatsController < ApplicationController
-  before_action :set_combat, only: [:show, :edit, :update, :destroy]
-  before_action :validate_access, only: [:show, :update, :edit, :destroy, :new]
+  before_action :set_combat, only: [:show, :edit, :update, :destroy, :add]
+  before_action :validate_access
 
+  def add
+    
+  end
+  
   def create
     user = current_user
     if user.combats.first.nil?
@@ -16,7 +20,7 @@ class CombatsController < ApplicationController
 
   def show
     @combat.combatants.sort_by { |cb| cb.position } #During initiative roll, position is set, then used going forward for sorting.
-  end  
+  end
 
   private
     def set_combat

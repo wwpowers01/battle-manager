@@ -7,6 +7,8 @@ class Combatant < ApplicationRecord
   belongs_to :combat
   before_save :increment_name
 
+  validates(:name, presence: true)
+
   private
 
   # Increments a number at the end of the combatant name if a duplicate exists

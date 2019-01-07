@@ -25,7 +25,12 @@ class CombatantsController < ApplicationController
   # POST /combatants
   # POST /combatants.json
   def create
-    @combatant = Combatant.new(combatant_params)
+    combat = Combat.find_by(id: combatant_params[:combat_id])
+    (1..combatant_params[:count].to_i).each do
+      combatant = combat.combatants.build(combatant_params)
+      combatant.save
+    end
+    redirect_to combat
   end
 
   # PATCH/PUT /combatants/1
@@ -64,6 +69,10 @@ class CombatantsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the white list through.
   def combatant_params
-    params.fetch(:combatant, {})
+    params.fetch(:combatant).permit(:name, 
+                                    :current_hp, 
+                                    :initiative, 
+                                    :count, 
+                                    :combat_id)
   end
 end

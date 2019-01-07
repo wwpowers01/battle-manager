@@ -5,7 +5,13 @@ class CombatsController < ApplicationController
   before_action :set_combat, only: %i[show edit update destroy add]
   before_action :validate_access
 
-  def add() end
+  def add
+    @combatant = @combat.combatants.build
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def create
     user = current_user

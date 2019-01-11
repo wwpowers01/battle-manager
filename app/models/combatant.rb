@@ -14,6 +14,8 @@ class Combatant < ApplicationRecord
   # Increments a number at the end of the combatant name if a duplicate exists
   # For example; If the name is Monster, and Monster 7 exists, it's renamed to Monster 8
   def increment_name
+    return nil unless self[:combat]
+
     names = find_similiar_names(self[:combat][:combatants])
     return nil unless names.empty?
 

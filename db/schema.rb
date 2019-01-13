@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_01_13_162346) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "characters", force: :cascade do |t|
     t.string "type"
     t.integer "initiative", default: 0
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 2019_01_13_162346) do
     t.integer "position", default: -1
     t.boolean "active", default: false
     t.string "name", null: false
-    t.integer "character_id"
-    t.integer "combat_id"
+    t.bigint "character_id"
+    t.bigint "combat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_combatants_on_character_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_162346) do
     t.integer "round", default: 1
     t.integer "duration", default: 1
     t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_combats_on_user_id"
@@ -54,4 +57,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_162346) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "combatants", "characters"
+  add_foreign_key "combatants", "combats"
+  add_foreign_key "combats", "users"
 end

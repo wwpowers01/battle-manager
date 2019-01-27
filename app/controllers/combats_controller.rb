@@ -2,7 +2,7 @@
 
 # Combats represent the flow of battle.
 class CombatsController < ApplicationController
-  before_action :set_combat, only: %i[show edit update destroy add]
+  before_action :set_combat, only: %i[show edit update destroy add remove]
   before_action :validate_access
 
   def add
@@ -23,6 +23,13 @@ class CombatsController < ApplicationController
   end
 
   def new() end
+
+  def remove
+    params[:combatants].each do |id|
+      Combatant.find(id).destroy
+    end
+    @combat.reload
+  end
 
   def show
     # During initiative roll, position is set, then used for sorting.

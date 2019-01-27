@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# A Combatant is the core component of a combat. A combat has many combatants and each combatant has basic stats.
+# A Combatant is the core component of a combat.
+# A combat has many combatants and each combatant has basic stats.
 # Combatants can relate to characters for more complicated scenarios
 class Combatant < ApplicationRecord
   attr_accessor :count
@@ -12,7 +13,7 @@ class Combatant < ApplicationRecord
   private
 
   # Increments a number at the end of the combatant name if a duplicate exists
-  # For example; If the name is Monster, and Monster 7 exists, it's renamed to Monster 8
+  # E.g.; If name is Monster, and Monster 7 exists, it's renamed to Monster 8
   def increment_name
     return nil unless combat
 
@@ -24,8 +25,8 @@ class Combatant < ApplicationRecord
     self.name = "#{name} #{index}"
   end
 
-  # Finds names of other combatants that start with a similiar name. 
-  # Combatants across the db cane have duplicate names, but not for the same combatant. 
+  # Finds names of other combatants that start with a similiar name.
+  # Combatants can have duplicate names, but not for the same combat.
   # Params:
   # +combatants+:: list of all combatants in the combat
   # @return [String[]]

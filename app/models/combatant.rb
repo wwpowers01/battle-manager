@@ -17,11 +17,17 @@ class Combatant < ApplicationRecord
   def increment_name
     return nil unless combat
 
-    names = find_similiar_names(combat.combatants)
-    return nil if names.empty?
+    matches = find_similiar_names(combat.combatants)
+    return nil if matches.empty? || matches.count == 1
 
-    num = names.last.scan('/\s\d/')
-    index = num.empty? ? 1 : num.strip.to_i + 1
+    if matches.count == 2
+      matches.first.name = "#{matches.first.name} 1"
+      matches.first.save
+      matches.first.reload
+    end
+    num = matches[-2].name.scan(/\d+$/)
+    # the last element is the current element
+    index = num.empty? ? 1 : num.first.to_i + 1
     self.name = "#{name} #{index}"
   end
 
@@ -31,12 +37,11 @@ class Combatant < ApplicationRecord
   # +combatants+:: list of all combatants in the combat
   # @return [String[]]
   def find_similiar_names(combatants)
-    matching_names = []
-
+    matches = []
     combatants.each do |combatant|
-      matching_names << combatant.name if combatant.name.match?("/#{name}\s/")
+      matches << combatant if combatant.name.start_with?(name)
     end
-
-    matching_names.sort
+    matches.sort_by { :name }
+    matches
   end
 end

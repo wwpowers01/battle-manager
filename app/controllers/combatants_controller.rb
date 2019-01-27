@@ -69,10 +69,10 @@ class CombatantsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the white list through.
   def combatant_params
-    params.fetch(:combatant).permit(:name, 
-                                    :current_hp, 
-                                    :initiative, 
-                                    :count, 
+    params.fetch(:combatant).permit(:name,
+                                    :current_hp,
+                                    :initiative,
+                                    :count,
                                     :combat_id)
   end
 end

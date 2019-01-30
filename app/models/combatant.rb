@@ -23,7 +23,7 @@ class Combatant < ApplicationRecord
     if matches.count == 2
       matches.first.name = "#{matches.first.name} 1"
       matches.first.save
-      matches.first.reload
+      # matches.first.reload # I'm pretty sure i don't need this
     end
     num = matches[-2].name.scan(/\d+$/)
     # the last element is the current element

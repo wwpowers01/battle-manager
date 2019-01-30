@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", function() {
   $("#removeCombatant").click(function( event ) {
     event.preventDefault(); //unsure if this is needed.
     url = $("#removeCombatant").data("link");

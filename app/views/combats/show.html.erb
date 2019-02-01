@@ -4,8 +4,8 @@
     <div class="combatants-col" id="one">
       <%= render 'combats_navbar' %>
       <div class="combatants">
-        <ol id="combatants-list">
-          <% @combat.combatants.each do |combatant| %>
+        <ol id="combatants-list" data-link="<%= combat_path %>">
+          <% @combat.combatants.sort_by(&:position).each do |combatant| %>
             <%= render partial: 'combatants/combatant_lg', locals: { combatant: combatant } %>
           <% end %>
         </ol>

@@ -31,9 +31,23 @@ class CombatsController < ApplicationController
     @combat.reload
   end
 
+  def update
+    if params[:combatants]
+      params[:combatants].each do |combatant|
+        the_combatant = Combatant.find(combatant[1][:id])
+        the_combatant.update_attribute(:position, combatant[1][:position])
+      end
+    end
+    @combat.reload
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def show
     # During initiative roll, position is set, then used for sorting.
-    @combat.combatants.sort_by { :position }
+    # Sorting is done in the view
   end
 
   private

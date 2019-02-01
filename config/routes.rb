@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get     '/register',   to: 'users#register'
 
   resources :users
-  resources :combats, only: %i[create show new index] do
+  resources :combats, only: %i[create show new index update] do
     member do
       get 'next'
       get 'previous'

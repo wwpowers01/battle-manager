@@ -68,7 +68,7 @@ class CombatsController < ApplicationController
     @combat.active = false
     @combat.round = 1
     @combat.combatants.each do |combatant|
-      combatant.update_attributes(initiative: combatant.init_mod, position: -1, active: false)
+      combatant.update_attributes(initiative: 0, position: -1, active: false)
     end
     @combat.save
     redirect_to @combat

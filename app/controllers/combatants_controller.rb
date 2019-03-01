@@ -72,7 +72,7 @@ class CombatantsController < ApplicationController
     params.fetch(:combatant).permit(:name,
                                     :current_hp,
                                     :max_hp,
-                                    :initiative,
+                                    :init_mod,
                                     :count,
                                     :combat_id)
   end

@@ -1,6 +1,13 @@
-<li class="combatant-list-item combatant-list-item-lb ui-corner-all" data-combatant-id="<%= combatant.id %>" data-active="<%= combatant.active %>">
-  <div class='handle'>
-    <span class='ui-icon ui-icon-carat-2-n-s'></span>
-  </div>
-  <%= combatant.name %>
+<li class="combatant-list-item combatant-list-item-lg ui-corner-all" data-combatant-id="<%= combatant.id %>" data-active="<%= combatant.active %>">
+  <div class="combatant-item combatant-item-lg">
+    <div class="float-left">
+      <div class='handle'>
+        <span class='ui-icon ui-icon-carat-2-n-s'></span>
+      </div>
+      <%= combatant.name %>
+    </div>
+    <div class="float-right">
+      <strong><%= combatant.current_hp %></strong>/<%= combatant.max_hp %><span class="init">(<%= sprintf("%+d", combatant.initiative) %>)</span>
+    </div>
+  </div>  
 </li>

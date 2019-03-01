@@ -66,6 +66,7 @@ class CombatsController < ApplicationController
 
   def stop
     @combat.active = false
+    @combat.round = 1
     @combat.combatants.each do |combatant|
       combatant.update_attributes(initiative: combatant.init_mod, position: -1, active: false)
     end

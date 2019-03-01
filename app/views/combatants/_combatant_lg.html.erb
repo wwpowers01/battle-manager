@@ -1,4 +1,4 @@
-<li class="combatant-list-item combatant-list-item-lg ui-corner-all" data-combatant-id="<%= combatant.id %>" data-active="<%= combatant.active %>">
+<li class="combatant-list-item combatant-list-item-lg ui-corner-all <%= 'combatant-active' if combatant.active? %>" data-combatant-id="<%= combatant.id %>" data-active="<%= combatant.active %>">
   <div class="combatant-item combatant-item-lg">
     <div class="float-left">
       <div class='handle'>

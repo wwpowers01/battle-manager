@@ -12,7 +12,7 @@
             <% if @combat.active? %>
               <%= button_to "Stop", stop_combat_path, { class: "btn btn-outline-primary" } %>
             <% else %>
-              <%= button_to "Roll", roll_combat_path, { class: "btn btn-outline-primary" } %>
+              <%= button_to "Roll", roll_combat_path, { method: :get, class: "btn btn-outline-primary" } %>
             <% end %>            
           </div>
           <div class="btn-group" role="group" aria-label="Manage Combat">

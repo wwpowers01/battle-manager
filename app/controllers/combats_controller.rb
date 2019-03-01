@@ -2,7 +2,7 @@
 
 # Combats represent the flow of battle.
 class CombatsController < ApplicationController
-  before_action :set_combat, only: %i[show edit update destroy add remove]
+  before_action :set_combat, only: %i[show edit update destroy add remove roll stop]
   before_action :validate_access
 
   def add
@@ -31,6 +31,19 @@ class CombatsController < ApplicationController
     @combat.reload
   end
 
+  def roll
+    @combat.active = true
+    @combat.save
+    @combat.combatants.each do |combatant|
+      combatant.update_attribute(:initiative, rand(1..20) + combatant.init_mod)
+    end
+    @combat.combatants.sort_by(&:initiative).each_with_index do |combatant, pos|
+      combatant.update_attribute(:active, true) if pos.zero?
+      combatant.update_attribute(:position, pos)
+    end
+    redirect_to @combat
+  end
+
   def update
     if params[:combatants]
       params[:combatants].each do |combatant|
@@ -49,6 +62,15 @@ class CombatsController < ApplicationController
   def show
     # During initiative roll, position is set, then used for sorting.
     # Sorting is done in the view
+  end
+
+  def stop
+    @combat.active = false
+    @combat.combatants.each do |combatant|
+      combatant.update_attributes(initiative: combatant.init_mod, position: -1, active: false)
+    end
+    @combat.save
+    redirect_to @combat
   end
 
   private

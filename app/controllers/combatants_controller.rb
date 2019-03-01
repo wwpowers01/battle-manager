@@ -71,6 +71,7 @@ class CombatantsController < ApplicationController
   def combatant_params
     params.fetch(:combatant).permit(:name,
                                     :current_hp,
+                                    :max_hp,
                                     :initiative,
                                     :count,
                                     :combat_id)

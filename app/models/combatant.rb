@@ -6,12 +6,16 @@
 class Combatant < ApplicationRecord
   attr_accessor :count
   belongs_to :combat
-  before_create :increment_name
+  before_create :increment_name, :set_current_hp
 
   validates(:name, presence: true)
 
   private
 
+  # Defaults the current hp if value is 0 during creation
+  def set_current_hp
+    self.current_hp = max_hp if current_hp.zero?
+  end
   # Increments a number at the end of the combatant name if a duplicate exists
   # E.g.; If name is Monster, and Monster 7 exists, it's renamed to Monster 8
   def increment_name

@@ -34,6 +34,7 @@ class CombatsController < ApplicationController
   def update
     if params[:combatants]
       params[:combatants].each do |combatant|
+        # the param comes over as an array. one day i'll fix that...
         the_combatant = Combatant.find(combatant[1][:id])
         the_combatant.update_attribute(:position, combatant[1][:position])
       end

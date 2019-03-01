@@ -7,7 +7,9 @@
       <%= combatant.name %>
     </div>
     <div class="float-right">
-      <strong><%= combatant.current_hp %></strong>/<%= combatant.max_hp %><span class="init">(<%= sprintf("%+d", combatant.initiative) %>)</span>
+      HP <strong><%= combatant.current_hp %></strong>/<%= combatant.max_hp %>
+      <span class="init">Init <span class="mod">(<%= sprintf("%+d", combatant.init_mod) %>)</span> </span>
+      <%= combatant.initiative %>
     </div>
   </div>  
 </li>

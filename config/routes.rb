@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'heal'
       get 'add'
       post 'remove'
+      post 'stop'
     end
   end
 

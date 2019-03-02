@@ -2,7 +2,7 @@
 
 # Combats represent the flow of battle.
 class CombatsController < ApplicationController
-  before_action :set_combat, only: %i[show edit update destroy add remove roll stop]
+  before_action :set_combat, only: %i[show edit update destroy add remove roll stop next previous]
   before_action :validate_access
 
   def add
@@ -24,11 +24,31 @@ class CombatsController < ApplicationController
 
   def new() end
 
+  def next
+    found = false
+    @combat.combatants.sort_by(&:position).each do |combatant|
+      combatant.active = true if found
+      found = false
+      if combatant.active?
+        combatant.update_attribute(:active, false)
+        found = true
+      end
+    end
+    redirect_to @combat unless found
+    @combat.round += 1
+    combatant = @combat.combatants.min_by(&:position)
+    combatant.update_attribute(:active, true)
+    @combat.save
+    redirect_to @combat
+  end
+
   def remove
     params[:combatants].each do |id|
       Combatant.find(id).destroy
     end
     @combat.reload
+    set_active_combatant(@combat)
+    stop_combat @combat unless @combat.combatants.any?
   end
 
   def roll
@@ -65,19 +85,33 @@ class CombatsController < ApplicationController
   end
 
   def stop
-    @combat.active = false
-    @combat.round = 1
-    @combat.combatants.each do |combatant|
-      combatant.update_attributes(initiative: 0, position: -1, active: false)
-    end
-    @combat.save
+    stop_combat @combat
     redirect_to @combat
   end
 
   private
 
+  def set_active_combatant(combat)
+    return unless combat.active?
+
+    return unless combat.combatants.any?
+
+    return if combat.combatants.any?(&:active?)
+
+    combat.combatants.min_by(&:position).update_attribute(:active, true)
+  end
+
   def set_combat
     @combat = Combat.find(params[:id])
+  end
+
+  def stop_combat(combat)
+    combat.active = false
+    combat.round = 1
+    combat.combatants.each do |combatant|
+      combatant.update_attributes(initiative: 0, position: -1, active: false)
+    end
+    combat.save
   end
 
   def validate_access

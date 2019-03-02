@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :users
   resources :combats, only: %i[create show new index update] do
     member do
-      get 'next'
-      get 'previous'
+      post 'next'
+      post 'previous'
       get 'roll'
       get 'damage'
       get 'heal'

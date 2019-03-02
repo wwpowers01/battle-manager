@@ -1,6 +1,5 @@
 $(document).on("turbolinks:load", function() {
   $("#removeCombatant").click(function( event ) {
-    event.preventDefault(); //unsure if this is needed.
     url = $("#removeCombatant").data("link");
     var data = new Object();
     data.combatants = [];           
@@ -15,7 +14,10 @@ $(document).on("turbolinks:load", function() {
       data: data,
       dataType: "JSON",
       success: function() {
-        window.location.reload();
+        location.reload();
+      },
+      fail: function() {
+        location.reload();
       }
     });
   }); 

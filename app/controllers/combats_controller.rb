@@ -26,7 +26,7 @@ class CombatsController < ApplicationController
 
   def next
     found = false
-    @combat.combatants.sort_by(&:position).each do |combatant|
+    @combat.combatants.each do |combatant|
       combatant.active = true if found
       found = false
       if combatant.active?
@@ -36,8 +36,7 @@ class CombatsController < ApplicationController
     end
     redirect_to @combat unless found
     @combat.round += 1
-    combatant = @combat.combatants.min_by(&:position)
-    combatant.update_attribute(:active, true)
+    @combat.combatants.first.update_attribute(:active, true)
     @combat.save
     redirect_to @combat
   end
@@ -57,7 +56,7 @@ class CombatsController < ApplicationController
     @combat.combatants.each do |combatant|
       combatant.update_attribute(:initiative, rand(1..20) + combatant.init_mod)
     end
-    @combat.combatants.sort_by(&:initiative).each_with_index do |combatant, pos|
+    @combat.combatants.sort_by(&:initiative).reverse.each_with_index do |combatant, pos|
       combatant.update_attribute(:active, true) if pos.zero?
       combatant.update_attribute(:position, pos)
     end
@@ -81,7 +80,7 @@ class CombatsController < ApplicationController
 
   def show
     # During initiative roll, position is set, then used for sorting.
-    # Sorting is done in the view
+    # Sorting is done in the model
   end
 
   def stop
@@ -98,7 +97,7 @@ class CombatsController < ApplicationController
 
     return if combat.combatants.any?(&:active?)
 
-    combat.combatants.min_by(&:position).update_attribute(:active, true)
+    combat.combatants.first.update_attribute(:active, true)
   end
 
   def set_combat

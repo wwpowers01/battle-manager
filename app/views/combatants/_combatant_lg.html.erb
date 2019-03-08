@@ -6,7 +6,7 @@
       </div>
       <%= combatant.name %>
     </div>
-    <div class="float-right">
+    <div class="float-right non-selectable">
       HP <strong><%= best_in_place combatant, :current_hp, :as => :input %></strong>/<%= combatant.max_hp %>
       <span class="init">Init <span class="mod">(<%= sprintf("%+d", combatant.init_mod) %>)</span> </span>
       <%= combatant.initiative %>

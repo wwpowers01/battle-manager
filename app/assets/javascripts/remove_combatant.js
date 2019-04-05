@@ -1,6 +1,6 @@
 $(document).on("turbolinks:load", function() {
-  $("#removeCombatant").click(function( event ) {
-    url = $("#removeCombatant").data("link");
+  $("#removeCombatant").click(function(e) {
+    var url = $("#removeCombatant").data("link");
     var data = new Object();
     data.combatants = [];           
 

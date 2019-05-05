@@ -22,6 +22,8 @@ gem 'responders', '~> 2.4'
 gem 'popper_js', '~> 1.14', '>= 1.14.5'
 gem 'pg', '~> 1.1', '>= 1.1.4'
 gem 'best_in_place', '~> 3.1'
+gem 'rails-client-logger', '~> 1.1', '>= 1.1.1'
+gem 'js-routes', '~> 1.4', '>= 1.4.6'
 
 group :development, :test do
   gem 'byebug', '11.0.1', platforms: [:mri, :mingw, :x64_mingw]

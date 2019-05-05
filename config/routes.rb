@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsClientLogger::Engine, :at => "logger"
   root    'static_pages#home'
 
   get     '/new',        to: 'static_pages#show'

@@ -1,10 +1,10 @@
 <div class="modal fade" id="addCombatantModal" tabindex="-1" role="dialog"></div>
-<div class="core-body">
+<div id="<%= @combat.id %>" class="core-body combats">
   <div class="row split flex">
     <div class="combatants-col" id="one">
       <%= render 'combats_navbar' %>
       <div class="combatants">
-        <ol id="combatants-list" data-link="<%= combat_path %>">
+        <ol id="combatants-list">
           <% @combat.combatants.each do |combatant| %>
             <%= render partial: 'combatants/combatant_lg', locals: { combatant: combatant } %>
           <% end %>
@@ -18,4 +18,3 @@
     </div>
   </div>
 </div>
-<%= javascript_include_tag "split", "list_handler" %>

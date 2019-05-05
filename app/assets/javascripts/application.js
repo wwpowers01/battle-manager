@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require rails_client_logger
 //= require best_in_place
 //= require jquery-ui
 //= require rails-ujs
@@ -19,8 +20,6 @@
 //= require popper
 //= require bootstrap
 //= require bootstrap-sprockets
-//= require_tree .
-//= require remove_combatant
-$(document).on("turbolinks:load", function() {
-  jQuery(".best_in_place").best_in_place();
-});
+//= require js-routes
+//= require init
+//= require app.combats
